@@ -1,0 +1,35 @@
+<!-- <h2>Login</h2>
+<p>{{message}}</p>
+<p>
+  <button type="button" (click)="login()"  *ngIf="!authService.isLoggedIn">Login</button>
+  <button type="button" (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
+</p> -->
+<!-- /* https://codepen.io/mamislimen/pen/jOwwLvy */ -->
+<div class="body">
+  <div class="main" *ngIf="!authService.isLoggedIn">  	
+    <input type="checkbox" id="chk" aria-hidden="true">
+
+      <div class="signup" >
+        <form>
+          <label for="chk" aria-hidden="true">Sign up</label>
+          <input type="text" name="first" placeholder="First Name" required [(ngModel)]="user.firstName">
+          <input type="text" name="last" placeholder="Last Name" required [(ngModel)]="user.lastName">
+          <input type="text" name="txt" placeholder="User name" required [(ngModel)]="user.username">
+          <input type="password" name="pswd" placeholder="Password" required [(ngModel)]="user.password">
+          <button type="button" (click)="signup()">Sign up</button>
+        </form>
+      </div>
+
+      <div class="login">
+        <form>
+          <label for="chk" aria-hidden="true">Login</label>
+          <input type="text" name="txt" placeholder="User name" required [(ngModel)]="user.username">
+          <input type="password" name="pswd" placeholder="Password" required [(ngModel)]="user.password">
+          <button type="button" (click)="login()" >Login</button>
+        </form>
+      </div>
+  </div>
+  <div *ngIf="authService.isLoggedIn">
+    
+  </div>
+</div>

@@ -9,12 +9,16 @@ import { ContactListComponent } from './componets/contact-list/contact-list.comp
 import { HeaderComponent } from './componets/header/header.component';
 import { FooterComponent } from './componets/footer/footer.component';
 import { SearchbarComponent } from './componets/searchbar/searchbar.component';
-
+import { LoginComponent } from './componets/login/login.component';
+import { AuthguardGuard } from './authguard.guard';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from  '@angular/common/http';
+import { AuthenticationService } from './services/authentication.service';
 const appRoutes: Routes = [
-  { path: 'search', component: SearchbarComponent },
-  { path: 'add', component: AddContactComponent },
-  { path: 'list', component: ContactListComponent },
-
+  { path: 'search', component: SearchbarComponent, canActivate:[AuthguardGuard] },
+  { path: 'add', component: AddContactComponent, canActivate:[AuthguardGuard]},
+  { path: 'list', component: ContactListComponent, canActivate:[AuthguardGuard] },
+  { path: 'login', component: LoginComponent },
 ];
 @NgModule({
   declarations: [
@@ -23,11 +27,14 @@ const appRoutes: Routes = [
     ContactListComponent,
     HeaderComponent,
     FooterComponent,
-    SearchbarComponent
+    SearchbarComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
     RouterModule.forRoot(
       appRoutes,
       {enableTracing: true} //debugging
@@ -36,4 +43,6 @@ const appRoutes: Routes = [
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  
+}
