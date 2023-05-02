@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +10,12 @@ import { HeaderComponent } from './componets/header/header.component';
 import { FooterComponent } from './componets/footer/footer.component';
 import { SearchbarComponent } from './componets/searchbar/searchbar.component';
 
+const appRoutes: Routes = [
+  { path: 'search', component: SearchbarComponent },
+  { path: 'add', component: AddContactComponent },
+  { path: 'list', component: ContactListComponent },
+
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +27,11 @@ import { SearchbarComponent } from './componets/searchbar/searchbar.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule.forRoot(
+      appRoutes,
+      {enableTracing: true} //debugging
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]
