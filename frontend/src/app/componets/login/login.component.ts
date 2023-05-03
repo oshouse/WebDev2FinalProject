@@ -23,8 +23,14 @@ export class LoginComponent {
   }
 
   login() {
+    const data = {
+      username : this.user.username,
+      password : this.user.password
+    }
+    this.authService.login(data)
 
-    this.authService.login().subscribe(() => {
+    this.authService.login(data).subscribe(() => {
+      
       if (this.authService.isLoggedIn) {
         // Usually you would use the redirect URL from the auth service.
         // However to keep the example simple, we will always redirect to `/admin`.
@@ -44,7 +50,7 @@ export class LoginComponent {
   }
   
   logout() {
-    this.authService.logout();
+    this.authService.logout()
     this.user.username= ""
     this.user.password= ""
     this.user.firstName= ""
@@ -58,11 +64,10 @@ export class LoginComponent {
       lastName : this.user.lastName,
       password : this.user.password
     }
-
+    // let userID = "";
     this.authService.signup(data)
       .subscribe({
         next: (res : any) => {
-          console.log(res);  
           this.user.username= ""
           this.user.password= ""
           this.user.firstName= ""
@@ -79,5 +84,6 @@ export class LoginComponent {
           }
         }
       })
+      // console.log(user)
   }
 }

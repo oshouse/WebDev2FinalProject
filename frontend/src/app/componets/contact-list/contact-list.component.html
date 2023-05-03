@@ -1,1 +1,8 @@
-<p>contact-list works!</p>
+
+<h1>Contacts:</h1>
+<div *ngFor = "let contact of contacts" class="list-group-info">
+    <p><b>{{contact.name}}</b></p>
+    <p>{{contact.address}}</p>
+    <p>{{contact.phoneNumber}}</p>
+
+</div>

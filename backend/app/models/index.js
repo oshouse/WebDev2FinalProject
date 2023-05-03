@@ -17,8 +17,7 @@ const contact =  mongoose.Schema(
         userID: String,
         address: String,
         name: String, 
-        phoneNumber: String, 
-        notes: String
+        phoneNumber: String
         }
     );
 

@@ -1,1 +1,19 @@
-<p>searchbar works!</p>
+
+    <div class="wrap">
+        <div class="search">
+        <input type="text" class="searchTerm" placeholder="Name" [(ngModel)]="name">
+        <button type="submit" class="searchButton" (click)="search()"> Search </button>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <h3>{{searchName}}</h3>
+        <div *ngFor = "let contact of contacts" class="list-group-info">
+            <p><b>{{contact.name}}</b></p>
+            <p>{{contact.address}}</p>
+            <p>{{contact.phoneNumber}}</p>
+        
+        </div>
+    </div>
+
+ 

@@ -1,1 +1,15 @@
-<div>We in the add contact componet</div>
+<h3>Add Contact</h3>
+<div class="container">
+<label >Name</label>
+<input type="text" name="name" required [(ngModel)]="contact.name">
+
+<label >Phone Number</label>
+<input type="text" name="number" required [(ngModel)]="contact.phoneNumber">
+
+<label >Contact</label>
+<input type="text" name="address" required [(ngModel)]="contact.address">
+
+<form>
+    <button type="button" (click)="newContact()">Add Contact</button>
+</form>
+</div>

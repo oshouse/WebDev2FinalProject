@@ -7,10 +7,5 @@ import { AuthenticationService } from './services/authentication.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'frontend';
-  constructor(private authService: AuthenticationService){}
 
-  getLoginStatus() {
-    return (this.authService.isLoggedIn ? 'Logout' : 'Login');
-  }
 }

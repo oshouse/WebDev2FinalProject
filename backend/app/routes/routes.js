@@ -11,6 +11,8 @@ module.exports = app => {
   
     router.post("/findUser", addressBook.findUser);
 
+    router.post("/searchContact", addressBook.searchContact);
+
     app.use("/api", router);
 
   };

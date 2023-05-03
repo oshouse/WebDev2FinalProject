@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { tap, delay } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { User } from '../models/user';
 import { HttpClient } from '@angular/common/http';
 
@@ -14,15 +13,26 @@ export class AuthenticationService {
   constructor(private http: HttpClient){}
   
   isLoggedIn = false;
-  user = new User;
+  user$!: Observable<any>
+  userID?: string = ""
   // store the URL so we can redirect after logging in
   redirectUrl: string | null = null;
 
-  login(): Observable<boolean> {
-    return of(true).pipe(
-      delay(1000),
-      tap(() => this.isLoggedIn = true)
-    );
+  login(data: any): Observable<User> {
+    this.user$ = this.http.post('http://localhost:8080/api/findUser', data)
+    this.user$.subscribe({
+      next: (res) => {
+        if(res[0]){
+          this.isLoggedIn = true
+          this.userID = res[0]._id
+
+        }else{
+          alert("Incorrect username or password try again")
+        }
+      },
+      error: (e) => console.error(e)
+    })
+    return this.user$
   }
 
   logout(): void {
@@ -36,5 +46,9 @@ export class AuthenticationService {
   IsLoggedIn(){
   
     return this.isLoggedIn
+  }
+
+  getUserID(){
+    return this.userID
   }
 }

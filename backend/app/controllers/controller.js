@@ -2,20 +2,18 @@ const db = require("../models");
 const User = db.user;
 const Contact = db.contact
 
-// Create and Save a new Tutorial
 exports.createContact = (req, res) => {
     if (!req.body.userID) {
         res.status(400).send({ message: "Content can not be empty!" });
         return;
     }
-
+    console.log(res)
     // Create a Contact
     const contact = new Contact({
         userID: req.body.userID,
         address: req.body.address,
         name: req.body.name,
-        phoneNumer: req.body.string,
-        notes: req.body.notes
+        phoneNumber: req.body.phoneNumber,
     });
 
     // Save Contact in the database
@@ -27,7 +25,7 @@ exports.createContact = (req, res) => {
         .catch(err => {
         res.status(500).send({
             message:
-            err.message || "Some error occurred while creating the Tutorial."
+            err.message || "Some error occurred while creating the Contact."
         });
         });
     
@@ -62,13 +60,13 @@ exports.createUser = (req, res) => {
         });
 };
 
-// Retrieve all Contacts from the database from user.
 exports.findContactsForUser = (req, res) => {
     const userID_ = req.params.id;
     console.log(userID_);
     Contact.find({userID: userID_})
       .then(data => {
         res.send(data);
+        console.log(data)
       })
       .catch(err => {
         res.status(500).send({
@@ -78,7 +76,6 @@ exports.findContactsForUser = (req, res) => {
       });
 };
 
-// Find a single Tutorial with an id
 exports.findUser = (req, res) => {
 
     const username_= req.body.username
@@ -86,8 +83,9 @@ exports.findUser = (req, res) => {
 
     User.find({"password": password_, "username": username_})
       .then(data => {
-        
+        console.log(data)
         res.send(data);
+        
       })
       .catch(err => {
         res.status(500).send({
@@ -95,4 +93,23 @@ exports.findUser = (req, res) => {
             err.message || "Some error occurred while retrieving tutorials."
         });
       });
+};
+
+exports.searchContact = (req, res) => {
+
+  const name = req.body.name
+  const id = req.body.userID
+
+  Contact.find({"userID": id, "name": { "$regex": name, "$options": "i" }})
+    .then(data => {
+      console.log(data)
+      res.send(data);
+      
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving tutorials."
+      });
+    });
 };
