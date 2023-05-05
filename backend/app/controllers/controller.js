@@ -4,7 +4,7 @@ const Contact = db.contact
 
 exports.createContact = (req, res) => {
     if (!req.body.userID) {
-        res.status(400).send({ message: "Content can not be empty!" });
+        res.status(400).send({ message: "Content cannot be empty!" });
         return;
     }
     console.log(res)
@@ -34,7 +34,7 @@ exports.createContact = (req, res) => {
 exports.createUser = (req, res) => {
     console.log(req.body);
     if (!req.body.username) {
-        res.status(400).send({ message: "Content can not be empty!" });
+        res.status(400).send({ message: "Content cannot be empty!" });
         return;
     } 
 

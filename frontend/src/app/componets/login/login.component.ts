@@ -73,12 +73,12 @@ export class LoginComponent {
           this.user.firstName= ""
           this.user.lastName= ""
           
-          alert("Successful sign up! Please login to use the sight")        
+          alert("Successful sign up! Please login to use the site.")        
         },
         error: (e: any) => {
           console.log(e)
           if(e.error.message.includes("E1100")){
-            alert("Username has been taken. Please choose a different one")
+            alert("Username has been taken. Please choose a different one.")
           }else{
             alert(e.error.message)
           }
