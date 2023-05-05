@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AddContactComponent } from './componets/add-contact/add-contact.component';
 import { ContactListComponent } from './componets/contact-list/contact-list.component';
-// import { FooterComponent } from './componets/footer/footer.component';
 import { LoginComponent } from './componets/login/login.component';
 import { SearchbarComponent } from './componets/searchbar/searchbar.component';
 import { AuthguardGuard } from './authguard.guard';

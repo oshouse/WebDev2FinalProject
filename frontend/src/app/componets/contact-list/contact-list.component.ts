@@ -1,10 +1,9 @@
 import { Component, OnDestroy, OnInit, ɵsetUnknownElementStrictMode } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-import { User } from 'src/app/models/user';
 import { Contact } from 'src/app/models/contact';
 
 import { AddressBookService } from 'src/app/services/address-book.service';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-contact-list',
   templateUrl: './contact-list.component.html',

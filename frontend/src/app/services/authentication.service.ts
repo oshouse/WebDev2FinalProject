@@ -44,7 +44,6 @@ export class AuthenticationService {
   }
 
   IsLoggedIn(){
-  
     return this.isLoggedIn
   }
 
