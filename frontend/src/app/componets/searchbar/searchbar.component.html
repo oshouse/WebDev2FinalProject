@@ -6,7 +6,7 @@
         </div>
     </div>
 
-    <div class="wrap">
+    <!-- <div class="wrap">
         <h3>{{searchName}}</h3>
         <div *ngFor = "let contact of contacts" class="list-group-info">
             <p><b>{{contact.name}}</b></p>
@@ -14,6 +14,30 @@
             <p>{{contact.phoneNumber}}</p>
         
         </div>
-    </div>
+    </div> -->
 
- 
+    <h3>{{searchName}}</h3>
+
+    <div class="contacts table" aria-labelledby="contacts-caption-text">
+        <div class="contacts-header thead">
+          <h4 class="th" id="th-name">Name:</h4>
+          <h4 class="th" id="th-org">Address:</h4>
+          <h4 class="th" id="th-phone">Phone:</h4>
+        </div>  
+        <ul *ngFor = "let contact of contacts" class="tbody">
+            <li class="tr" itemscope itemtype="http://schema.org/Person">
+                <span class="td">
+                    <span class="label">Name:</span>
+                    <span class="data" itemprop="name" aria-labelledby="th-name">{{contact.name}}</span>
+                </span>
+                <span class="td">
+                    <span class="label">Address:</span>
+                    <span class="data" itemprop="name" aria-labelledby="th-org">{{contact.address}}</span>
+                </span>
+                <span class="td">
+                    <span class="label">Phone:</span>
+                    <span class="data" itemprop="telephone" aria-labelledby="th-phone">{{contact.phoneNumber}}</span>
+                </span>
+            </li>   
+        </ul>
+      </div>
